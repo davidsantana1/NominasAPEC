@@ -9,11 +9,11 @@ Instala Python en tu sistema y ejecuta los siguientes pasos.
 ### Para utilizar el programa de crear archivo de nóminas
 
 ```
-    python unapec.py
+python unapec.py
 ```
 
 ### Para utilizar el programa de leer el archivo de nóminas
 
 ```
-    python banco.py
+python banco.py
 ```
