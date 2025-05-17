@@ -24,7 +24,7 @@ def crear_nominas(datos_encabezado, lista_detalles):
 
     for detalle in lista_detalles:
         crear_detalle(**detalle)
-    
+
 
 if __name__ == "__main__":
     main()

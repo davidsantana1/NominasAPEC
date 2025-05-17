@@ -1,5 +1,23 @@
-from utils import leer_archivo, format_date, print_title, format_cedula, format_monto
+from utils import leer_archivo, print_title, formatear_encabezado, formatear_detalle
 from tabulate import tabulate
+
+HEADERS_ENCABEZADO = [
+    "RNC",
+    "Fecha de Proceso",
+    "Cantidad de Empleados",
+    "No. de Cuenta",
+    "Código del Banco",
+    "Referencia del Pago",
+    "Monto Total",
+]
+
+HEADERS_DETALLE = [
+    "Cédula del Empleado",
+    "No. de Cuenta",
+    "Monto a Pagar",
+    "Tipo de Cuenta",
+    "Código del Banco Destino",
+]
 
 
 def main():
@@ -23,33 +41,18 @@ def main():
         print("No se encontró información de detalles válida.")
         return 1
 
-    procesar_encabezado(encabezado[0])
+    formatear_encabezado(encabezado[0])
 
     print_title("Encabezado")
-    print(tabulate(encabezado, headers=["RNC", "Fecha de Proceso", "Cantidad de Empleados", "No. de Cuenta", "Código del Banco", "Referencia del Pago","Monto Total"], tablefmt="grid"))
+    print(tabulate(encabezado, headers=HEADERS_ENCABEZADO, tablefmt="grid"))
 
-    procesar_detalle(detalles)
+    formatear_detalle(detalles)
 
     print_title("Detalle")
-
-    print(tabulate(detalles, headers=["Cédula del Empleado", "No. de Cuenta", "Monto a Pagar", "Tipo de Cuenta", "Código del Banco Destino"], tablefmt="grid"))
+    print(tabulate(detalles, headers=HEADERS_DETALLE, tablefmt="grid"))
 
     return 0
 
 
-def procesar_encabezado(row):
-    row[1] = format_date(row[1])
-    row[-1] = format_monto(row[-1])
-    return row
-
-
-def procesar_detalle(detalles):
-    for row in detalles:
-        row[0] = format_cedula(row[0])
-        row[2] = format_monto(row[2])
-        row[3] = "Cuenta Corriente" if row[3] == "C" else "Cuenta de Ahorros"
-    return row
-
-
-if (__name__ == "__main__"):
+if __name__ == "__main__":
     main()
