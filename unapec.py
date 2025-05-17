@@ -1,6 +1,6 @@
 from encabezado import pedir_datos_encabezado, crear_encabezado
 from detalle import pedir_datos_detalle, crear_detalle
-from utils import guardar_en_archivo
+from utils import guardar_en_archivo, leer_archivo
 
 
 def main():
@@ -24,7 +24,7 @@ def crear_nominas(datos_encabezado, lista_detalles):
 
     for detalle in lista_detalles:
         crear_detalle(**detalle)
-
+    
 
 if __name__ == "__main__":
     main()

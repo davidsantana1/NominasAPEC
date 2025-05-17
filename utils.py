@@ -1,3 +1,10 @@
+import locale
+
+from datetime import datetime
+from stdnum.do import cedula
+
+locale.setlocale(locale.LC_ALL, 'es_DO.UTF-8')
+
 RNC_UNAPEC = "401005107"
 NO_CUENTA_UNAPEC = "807931407"
 
@@ -28,3 +35,30 @@ def guardar_en_archivo(nombre_archivo, lineas):
     with open(nombre_archivo, "w", encoding="utf-8") as archivo:
         for linea in lineas:
             archivo.write(linea + "\n")
+    
+    print("Archivo creado correctamente.")
+
+
+def leer_archivo(nombre_archivo):
+    with open(nombre_archivo, "r", encoding="utf-8") as archivo:
+        lineas = []
+        for linea in archivo:
+            lineas.append(linea.split(","))
+    
+    return lineas
+
+
+def format_date(date):
+    return datetime.strptime(date, "%Y%m%d").strftime("%d/%m/%y")
+
+
+def print_title(title):
+    print(f"\n==== {title} ====")
+
+
+def format_cedula(cedula_raw):
+    return cedula.format(cedula_raw)
+
+
+def format_monto(monto):
+    return locale.currency(int(monto), grouping=True)

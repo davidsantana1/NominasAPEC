@@ -42,4 +42,4 @@ def crear_encabezado(
 ):
     fechaProceso = datetime.today().strftime("%Y%m%d")
 
-    return f"E{RNC_UNAPEC}{fechaProceso}{cantidad_de_empleados.zfill(5)}{NO_CUENTA_UNAPEC.zfill(20)}{codigo_del_banco}{referencia_del_pago.ljust(15)}{total_de_monto.zfill(12)}"
+    return f"E,{RNC_UNAPEC},{fechaProceso},{cantidad_de_empleados},{NO_CUENTA_UNAPEC},{codigo_del_banco},{referencia_del_pago},{total_de_monto}"

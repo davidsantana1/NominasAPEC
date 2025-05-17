@@ -53,4 +53,4 @@ def crear_detalle(
     tipo_de_cuenta,
     codigo_banco_destino,
 ):
-    return f"D{cedula_empleado}{cuenta_empleado.zfill(20)}{monto_a_pagar.zfill(10)}{tipo_de_cuenta}{codigo_banco_destino}"
+    return f"D,{cedula_empleado},{cuenta_empleado},{monto_a_pagar},{tipo_de_cuenta},{codigo_banco_destino}"
